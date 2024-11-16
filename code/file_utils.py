@@ -16,7 +16,7 @@ def get_data_paths(folder_path, output_path, noFrames, reverse=False):
     frame_numbers = []
 
     for i in range(noFrames):
-        f = '%06d.png' % (i)
+        f = 'frame_%04d.png' % (i)
 
         image_paths.append(os.path.join(folder_path, f)) 
         depth_paths.append(os.path.join(folder_path, f[:-3]+'npy')) 

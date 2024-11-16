@@ -1,15 +1,6 @@
-from tqdm.notebook import tqdm
-import torch
-from mydiffusers import StableDiffusionPipeline,StableDiffusionDepth2ImgPipeline,DDIMScheduler
-import numpy as np
-import abc
-import shutil
-from PIL import Image
+from mydiffusers import StableDiffusionDepth2ImgPipeline,DDIMScheduler
 from pytorch_lightning import seed_everything
 import os
-import cv2
-import contextlib
-import imageio
 import argparse
 import configparser
 
@@ -50,10 +41,10 @@ strength = 1.0
 parser = argparse.ArgumentParser()
 
 #######This file is to test the setup where we do not do any finetuning and we use the cfg update############
-parser.add_argument("--config", type=str, default='/home/ceylan/pix2video/example_data/blackswan/blackswan_config_edit1.cfg',help="config file")
-parser.add_argument("--input_path", type=str, default='/home/ceylan/pix2video/example_data/blackswan',help="input path")
-parser.add_argument("--output_path", type=str, default='/home/ceylan/pix2video/example_data/blackswan_out',help="output path")
-parser.add_argument("--inversion_path", type=str, default='/home/ceylan/pix2video/example_data/blackswan/inversion', help="inversion path")
+parser.add_argument("--config", type=str, default='example_data/data_config.cfg',help="config file")
+parser.add_argument("--input_path", type=str, default='example_data/inputs',help="input path")
+parser.add_argument("--output_path", type=str, default='example_data/outputs',help="output path")
+parser.add_argument("--inversion_path", type=str, default='example_data/inversion', help="inversion path")
 parser.add_argument("--a_reverse", type=int, default=0,help="whether to process in reverse order")
 parser.add_argument("--use_keyframe_only", type=int, default=0,help="whether to attend only to an anchor frame or not")
 parser.add_argument("--classifier_guidance_flag", type=int, default=1,help="whether to do latent update")
